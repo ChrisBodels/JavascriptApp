@@ -1,10 +1,11 @@
-//import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+//import '../src/app.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Quiz from './app'; 
+import App from './app'; 
 
 
 		ReactDOM.render(
-		  (<Quiz />),
+		  (<App />),
 		  document.getElementById('root')
 		);

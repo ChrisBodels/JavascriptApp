@@ -1,5 +1,5 @@
 {
-  "name": "hackerNews",
+  "name": "Assignment1",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
@@ -7,11 +7,12 @@
   },
   "dependencies": {
     "babel-runtime": "^5.8.38",
+    "bootstrap": "^3.3.6",
     "lodash": "^2.4.2",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
     "react-icon": "^1.0.0",
-    "bootstrap": "^3.3.6" 
+    "react-router": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
