@@ -1,50 +1,52 @@
-.menu {
-    display:block;
-
-    @menu-width:250px;
-
-    >div {
-        position:absolute;
-        z-index:2;
-        top:0;
-        width:@menu-width; 
-        height:100%; 
-        .border-box; 
-        .transition(-webkit-transform ease 250ms); 
-        .transition(transform ease 250ms);
-
-        &.left {
-            background:#273D7A;
-            left:@menu-width*-1;
-        }
-
-        &.visible.left {
-            .transform(translate3d(@menu-width, 0, 0));
-        }
-
-        &.right {
-            background:#6B1919;
-            right:@menu-width*-1;
-        }
-
-        &.visible.right {
-            .transform(translate3d(@menu-width*-1, 0, 0));
-        }
-
-        >.menu-item {
-            float:left;
-            width:100%;
-            margin:0;
-            padding:10px 15px;
-            border-bottom:solid 1px #555;
-            cursor:pointer;
-            .border-box;
-            color:#B0B0B0;
-
-            &:hover {
-                color:#F0F0F0;
-            }
-        }
-    }
+#Nav {
+	margin:0px 0 0 20px; 
 }
 
+#Nav li a{
+	display: block;
+}
+
+
+#Nav ul{
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0;
+    	padding: 0;
+}
+
+#Nav ul li{
+	display:inline;
+	float:left;
+	margin-bottom:20px; 
+}
+
+/* :first-child pseudo selector with rounded top left corner */
+#Nav ul li:first-child a { 
+	border-top-left-radius:12px; 
+}
+
+/* :last-child pseudo selector with rounded top right corner */
+#Nav ul li:last-child a {
+	border-top-right-radius:12px; 
+}
+
+/* background color set to RGBA, with opacity on 0.5 and also using text-shadow */
+#Nav ul li a { padding:20px; 
+	background: rgba(255,138,30,0.3); 
+	text-decoration: none; 
+	font: bold 14px Helvetica, Sans-Serif; 
+	letter-spacing: -1px; 
+	color: #402e16;
+ 	text-shadow: #eee 0px 0px 2px; 
+}
+
+/* hover state shows a linear gradient and opacity it brought down to 0.9 and also shows a very slight grey gradient on top */
+#Nav ul li a:hover {
+ 	background: -webkit-gradient(linear, right bottom, left top, color-stop(0, rgb(237,227,112)), 		color-stop(0.72, rgb(255,173,10))) !important;
+ 	background: -moz-linear-gradient(right bottom, rgb(237,227,112) 0%, rgb(255,173,10) 72%) !	 	 important;
+ 	background-color:rgb(255,173,10) !important; 
+}
+
+#Nav ul li a.active { 
+	background: rgba(255,138,30,0.8) !important; 
+}
