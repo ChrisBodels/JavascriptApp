@@ -51,21 +51,32 @@
 	background: rgba(255,138,30,0.8) !important; 
 }
 
-ul.items{
+#items{
 	list-style: none;
 	font-size: 0px;
+	margin-left: -2.5%;
 }
 
-ul.items li{
+#items li{
 	display: inline-block;
 	padding: 10px;
+	margin: 0 0 2.5% 2.5%;
 	background: #fff;
 	border: 1px solid #ddd;
 	font-size: 16px;
 	font-size: 1rem;
 	vertical-align: top;
 	box-shadow: 0 0 5px #ddd;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+}
+
+#items li img{
+	max-width: 250px;
+	max-height: 250px;
+	margin: 10px;
+}
+
+#items li p{
+	font-size: 1.3em;
+	line-height: 1.5em;
+	color: #999;
 }
