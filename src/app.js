@@ -19,6 +19,32 @@ function containsObject(obj, array)
   return false;
 }
 
+/*function sortGamesAlphabetically(objA, objB)
+{
+  var x = a.name.toLowerCase();
+  var y = b.name.toLowerCase()
+  if(x < y) {return -1;}
+  if(x > y) {return 1;}
+}*/
+
+function sorterRelease(array)
+{
+  array.sort(function sortGamesRelease(a, b)
+  {
+    return parseFloat(a.year) - parseFloat(b.year);
+  });
+  this.forceUpdate();
+}
+
+function sorterAlphabetical(array)
+{
+  array.sort(function sortGamesAlphabetically(a, b)
+  {
+    return a.name.localeCompare(b.name);
+  });
+  this.forceUpdate();
+}
+
 
 class Home extends React.Component
 {
@@ -26,7 +52,8 @@ class Home extends React.Component
   {
     return(
       <div>
-        <h1>Hello from home!</h1>
+        <h1>Welcome to my online video game store!</h1>
+        <p>I made this web app to simulate a simple storefront for selling video games online. Enjoy!</p>
       </div>
     );
   }
@@ -63,12 +90,15 @@ class Store extends React.Component
             <img src={require(game.img)}/>
             <h3><Link to={game.link}>{game.name}</Link></h3>
             <p>{game.desc}</p>
+            <p>Released: {game.year}</p>
             <Button onClick={this.buttonClicked.bind(this, game)}>Purchase</Button>
           </li>
       )
     })
     return(
       <div>
+        <Button onClick={sorterAlphabetical.bind(this, games)}>Sort Alphabetically</Button>
+        <Button onClick={sorterRelease.bind(this, games)}>Sort by Release Date</Button>
         <h1>Here are all the games that are currently available</h1>
         <ul id="items">
           {gamesList}
@@ -90,11 +120,14 @@ class Library extends React.Component
           <img src={require(game.img)}/>
           <h3><Link to={game.link}>{game.name}</Link></h3>
           <p>{game.desc}</p>
+          <p>Released: {game.year}</p>
         </li>
       )
     })
     return(
       <div>
+        <Button onClick={sorterAlphabetical.bind(this, ownedGames)}>Sort Alphabetically</Button>
+        <Button onClick={sorterRelease.bind(this, ownedGames)}>Sort by Release Date</Button>
         <h1>Here are all the games you currently own!</h1>
         <ul id="items">
           {gamesList}
