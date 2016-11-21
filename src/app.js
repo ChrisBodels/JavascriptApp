@@ -1,5 +1,9 @@
 import React from 'react';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router'
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
+import Button from 'react-button';
+import Games from './gameList.js';
+
+var games = Games;
 
 
 class Home extends React.Component
@@ -19,117 +23,41 @@ class Store extends React.Component
 {
   render()
   {
+    const gamesList = games.map(game =>{
+      return(
+          <li>
+            <img src={require(game.img)}/>
+            <h3><Link to={game.name}>{game.name}</Link></h3>
+            <p>{game.desc}</p>
+            <Button onClick={foo}>Purchase</Button>
+          </li>
+      )
+    })
     return(
       <div>
-      <h1>Here is the list of games currently available!</h1>
+        <h1>Here are all the games that are currently available</h1>
         <ul id="items">
-          <li>
-            <img src={require("./images/Battlefield1.jpg")} />
-            <h3>BattleField 1</h3>
-            <p>Battlefield 1 is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/bloodborne.jpg")} />
-            <h3>Bloodborne</h3>
-            <p>Bloodborne is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/Grand-Theft-Auto-5.jpg")} />
-            <h3>Grand Theft Auto 5</h3>
-            <p>Grand Theft Auto 5 is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/darksouls.jpg")} />
-            <h3>Dark Souls</h3>
-            <p>Dark Souls is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/dark-souls-2.jpg")} />
-            <h3>Dark Souls 2</h3>
-            <p>Dark Souls 2 is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/Dark_souls3.jpg")} />
-            <h3>Dark Souls 3</h3>
-            <p>Dark Souls 3 is a game...</p>
-            <button>Purchase</button>          
-          </li>
-          <li>
-            <img src={require("./images/Dishonored.png")} />
-            <h3>Dishonored</h3>
-            <p>Dishonored is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/Dishonored_2.jpg")} />
-            <h3>Dishonored 2</h3>
-            <p>Dishonored 2 is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/overwatch.jpg")} />
-            <h3>Overwatch</h3>
-            <p>Overwatch is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/rise-of-the-tomb-raider.jpg")} />
-            <h3>Rise of the Tomb Raider</h3>
-            <p>Rise of the Tomb Raider is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/tomb-raider.jpg")} />
-            <h3>Tomb Raider</h3>
-            <p>Tomb Raider is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/star-wars-battlefront.jpg")} />
-            <h3>Star Wars Battlefront</h3>
-            <p>Star Wars Battlefront...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/Titanfall2.jpg")} />
-            <h3>Titanfall 2</h3>
-            <p>Titanfall 2 is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/watchdogs.jpg")} />
-            <h3>Watchdogs</h3>
-            <p>Watchdogs is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/WatchDogs2.jpg")} />
-            <h3>Watchdogs 2</h3>
-            <p>Watchdogs 2 is a game...</p>
-            <button>Purchase</button>
-          </li>
-          <li>
-            <img src={require("./images/Witcher_3.jpg")} />
-            <h3>Witcher 3</h3>
-            <p>Witcher 3 is a game...</p>
-            <button onClick="foo()">Purchase</button>          
-          </li>
+          {gamesList}
         </ul>
       </div>
-    );
+    )
   }
 };
 
-/*<script>
-function foo(){
-  alert('foo')
+
+function foo()
+{
+  var result = confirm("Are you sure you want to buy this game?");
+  if(result == true)
+  {
+    alert("Game purchased! You should now see it in your library.");
+  }
+  else
+  {
+    
+  }
 }
-</script>*/
+
 
 class Library extends React.Component
 {
@@ -182,14 +110,6 @@ var Container = (props) => <div>
 </div>
 
 
-/*var Button = require('react-button')
-
-function clicked(event){
-  alert("Hello! I am an alert box!!");
-}*/
-
-
-
   class App extends React.Component
   {
     render()
@@ -198,7 +118,7 @@ function clicked(event){
         <Router history={browserHistory}>
           <Route path='/' component={Container}>
             <IndexRoute component={Home} />
-            <Route path='/Store' component={Store} />
+            <Route path='/Store' component={Store} data={Games}/>
             <Route path='/Library' component={Library} />
             <Route path='*' component={NotFound} />
           </Route>
