@@ -3,6 +3,12 @@ import { Router, Route, Link, IndexRoute, browserHistory, IndexLink } from 'reac
 import Button from 'react-button';
 import Games from './gameList.js';
 
+/**
+  *@author Chris Bodels
+  *
+  *
+  */
+
 var games = Games;
 var ownedGames = [];
 
@@ -19,13 +25,6 @@ function containsObject(obj, array)
   return false;
 }
 
-/*function sortGamesAlphabetically(objA, objB)
-{
-  var x = a.name.toLowerCase();
-  var y = b.name.toLowerCase()
-  if(x < y) {return -1;}
-  if(x > y) {return 1;}
-}*/
 
 function sorterRelease(array)
 {
@@ -71,7 +70,7 @@ class Store extends React.Component
     else
     {
       var result = confirm("Are you sure you want to buy this game?");
-      if(result == true)
+      if(result === true)
       {
         ownedGames.push(game);
         alert("Game purchased! You should now see it in your library.");

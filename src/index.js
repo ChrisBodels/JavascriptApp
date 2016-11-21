@@ -4,6 +4,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app'; 
 
+/**
+  *@author Chris Bodels
+  *
+  *
+  */
 
 		ReactDOM.render(
 		  (<App />),
