@@ -6,6 +6,19 @@ import Games from './gameList.js';
 var games = Games;
 var ownedGames = [];
 
+function containsObject(obj, array)
+{
+  var i;
+  for (i=0; i < array.length; ++i)
+  {
+    if(array[i] === obj)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 class Home extends React.Component
 {
@@ -24,17 +37,22 @@ class Store extends React.Component
 {
    buttonClicked(game)
   {
-    var result = confirm("Are you sure you want to buy this game?");
-    console.log(game.name);
-    if(result == true)
+    if(containsObject(game, ownedGames) === true)
     {
-      ownedGames.push(game);
-      alert("Game purchased! You should now see it in your library.");
-      console.log(ownedGames[1].name);
+      alert("You already own this game, you cannot purchase it again.");
     }
     else
     {
+      var result = confirm("Are you sure you want to buy this game?");
+      if(result == true)
+      {
+        ownedGames.push(game);
+        alert("Game purchased! You should now see it in your library.");
+      }
+      else
+      {
     
+      }
     }
   }
   render()
@@ -43,7 +61,7 @@ class Store extends React.Component
       return(
           <li key={game.id}>
             <img src={require(game.img)}/>
-            <h3><Link to={game.name}>{game.name}</Link></h3>
+            <h3><Link to={game.link}>{game.name}</Link></h3>
             <p>{game.desc}</p>
             <Button onClick={this.buttonClicked.bind(this, game)}>Purchase</Button>
           </li>
@@ -70,7 +88,7 @@ class Library extends React.Component
       return(
         <li key={game.id}>
           <img src={require(game.img)}/>
-          <h3><Link to={game.name}>{game.name}</Link></h3>
+          <h3><Link to={game.link}>{game.name}</Link></h3>
           <p>{game.desc}</p>
         </li>
       )
